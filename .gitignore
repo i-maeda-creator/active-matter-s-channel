@@ -1,6 +1,8 @@
 *.o
 *.obj
 *.tmp
+__pycache__/
+*.pyc
 
 # New build outputs should be reproducible from source.
 build/

@@ -57,4 +57,5 @@ First-frame comparison command:
 ```sh
 python analysis/compare_runs.py out.dat runs/legacy-shape-r04-ly34/out.dat --frames 1
 python analysis/plot_frames.py out.dat runs/legacy-shape-r04-ly33-step7000/out.dat --frame 0 --output analysis/legacy_frame0_compare.png --xlim 0,34 --ylim 29,35
+python analysis/animate_runs.py out.dat runs/legacy-best-500/out.dat --output analysis/legacy_compare.gif --frames 120 --stride 4 --fps 12 --xlim 0,68 --ylim 0,35
 ```
