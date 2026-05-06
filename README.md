@@ -42,6 +42,34 @@
 - `g++ -fsyntax-only activematter.C`: 成功
 - `g++ -fsyntax-only zyugyo.C`: 失敗。`include/eforce.h` と `include/vforce.h` が `L` を参照する一方、現在の `include/system.h` では `LX`, `LY` が使われているため。
 
+## 実行方法
+
+MinGW などで `g++` が使える環境なら、まず構文確認できます。
+
+```sh
+g++ -fsyntax-only activematter.C
+```
+
+実行ファイルを作る場合:
+
+```sh
+g++ -O2 -Wall -Wextra activematter.C -o active-matter
+./active-matter
+```
+
+`make` が使える環境では以下でも同じです。
+
+```sh
+make check
+make run
+```
+
+出力:
+
+- `dat/out.dat`: 各出力ステップの粒子位置 `x y r`
+- `dat/ene.dat`: `time kin pot wpo ene`
+- `dat/params.txt`: 実行時の主要パラメータ
+
 未完成または要確認のもの:
 
 - `KR = 0.0` なので、現状設定では Kuramoto 相互作用が無効です。
