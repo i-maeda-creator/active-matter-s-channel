@@ -101,6 +101,7 @@ make run
 
 ```sh
 python analysis/compare_runs.py out.dat runs/legacy-shape-r04-ly34/out.dat --frames 1
+python analysis/plot_frames.py out.dat runs/legacy-shape-r04-ly33-step7000/out.dat --frame 0 --output analysis/legacy_frame0_compare.png --xlim 0,34 --ylim 29,35
 ```
 
 未完成または要確認のもの:
