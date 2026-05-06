@@ -1,0 +1,25 @@
+#include <stdio.h>     standard .hはヘッダーファイル　io はinput output
+#include <stdlib.h>    libはlibrary
+#include <math.h>
+
+C言語・・・すべて関数
+　　　　　y=f(x)  ←数値
+
+　　　　　int  　　   整数
+　　　　　double　   実数
+　　　　　　　　   （複素数）　
+
+int f(x)
+
+int main(){
+　－－－－－－－－
+｜　　　　　　　　｜
+｜　　計算　　　　｜
+｜　　　　　　　　｜
+　－－－－－－－－
+return 0;
+}   
+
+
+\n で改行　　printf("kontiha\n");
+　　
