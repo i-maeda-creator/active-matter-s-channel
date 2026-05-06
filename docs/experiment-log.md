@@ -29,11 +29,31 @@ Reproduction candidates:
 Current best guess:
 
 ```sh
-./active-matter runs/legacy-shape-r04-ly34 1 1000 shape 0.4 10 68 34
+./active-matter runs/legacy-shape-r04-ly33-step7000 1 7000 shape 0.4 10 68 33
 ```
+
+First-frame metric comparison for the current best guess:
+
+```text
+old center: (17.572446, 31.598673)
+new center: (17.429625, 31.778469)
+delta:      (-0.142821, 0.179796)
+old span:   width=24.536137, height=3.099160
+new span:   width=22.408645, height=2.093027
+ordered RMSE:   11.940984
+sorted xy RMSE: 4.740988
+```
+
+The center of mass is now close. Ordered particle RMSE is still large, so the particle identity/order or random initialization history is likely not identical.
 
 Next checks:
 
+- Add order-independent comparisons such as nearest-neighbor distance or sorted-by-x/y matching.
 - Run the current best guess for more output frames and compare trajectories against the old `out.dat`.
-- Add an analysis script that compares frame-level center of mass, bounding box, mean velocity, and flow through the S-channel.
-- Recover whether old `LX/LY` were exactly `68/34` or whether the output only occupied part of a larger domain.
+- Recover whether old `LX/LY` were exactly `68/33` or whether the output only occupied part of a larger domain.
+
+First-frame comparison command:
+
+```sh
+python analysis/compare_runs.py out.dat runs/legacy-shape-r04-ly34/out.dat --frames 1
+```

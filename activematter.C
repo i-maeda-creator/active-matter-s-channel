@@ -58,15 +58,15 @@ int main(int argc, char **argv){
     if( argc >= 2 ) output_dir = argv[1];
     if( argc >= 3 ){
         output_steps = atoi(argv[2]);
-        if( output_steps <= 0 || output_steps > OSTEP ){
-            printf("Output step count must be between 1 and %d.\n",OSTEP);
+        if( output_steps <= 0 ){
+            printf("Output step count must be positive.\n");
             return 1;
         }
     }
     if( argc >= 4 ){
         inner_steps = atoi(argv[3]);
-        if( inner_steps <= 0 || inner_steps > ISTEP ){
-            printf("Inner step count must be between 1 and %d.\n",ISTEP);
+        if( inner_steps <= 0 ){
+            printf("Inner step count must be positive.\n");
             return 1;
         }
     }

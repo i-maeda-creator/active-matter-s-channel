@@ -64,6 +64,7 @@ g++ -O2 -Wall -Wextra activematter.C -o active-matter
 ```
 
 引数は `出力フォルダ 出力ステップ数 内側ステップ数 初期配置 半径 粒子数 LX LY` です。初期配置は `shape` または `random` です。省略すると `runs/latest 200 2000 shape 0.5 250 200 80` で実行します。
+`OSTEP` と `ISTEP` はデフォルト値として記録されますが、引数でそれより大きい値も指定できます。
 
 昔の出力に近い半径 `R=0.4` で S 字入口配置を試す場合:
 
@@ -80,7 +81,7 @@ g++ -O2 -Wall -Wextra activematter.C -o active-matter
 現時点で最も昔の1フレーム目に近い候補:
 
 ```sh
-./active-matter runs/legacy-shape-r04-ly34 1 1000 shape 0.4 10 68 34
+./active-matter runs/legacy-shape-r04-ly33-step7000 1 7000 shape 0.4 10 68 33
 ```
 
 `make` が使える環境では以下でも同じです。
@@ -95,6 +96,12 @@ make run
 - `runs/<run-name>/out.dat`: 各出力ステップの粒子位置 `x y r`
 - `runs/<run-name>/ene.dat`: `time kin pot wpo ene`
 - `runs/<run-name>/params.txt`: 実行時の主要パラメータ
+
+古い出力と復元実験を比較する場合:
+
+```sh
+python analysis/compare_runs.py out.dat runs/legacy-shape-r04-ly34/out.dat --frames 1
+```
 
 未完成または要確認のもの:
 

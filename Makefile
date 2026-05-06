@@ -23,6 +23,9 @@ legacy-shape-r04: active-matter
 legacy-shape-r04-ly34: active-matter
 	./active-matter runs/legacy-shape-r04-ly34 1 1000 shape 0.4 10 68 34
 
+legacy-best: active-matter
+	./active-matter runs/legacy-shape-r04-ly33-step7000 1 7000 shape 0.4 10 68 33
+
 run: active-matter
 	./active-matter runs/latest
 
