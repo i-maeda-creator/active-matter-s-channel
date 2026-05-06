@@ -7,7 +7,7 @@ void rforce(){
     double vmp = sqrt(2.0*DD);
     double omp = sqrt(2.0*DR);
 
-    for( i = 0; i < N; i++ ){
+    for( i = 0; i < NP; i++ ){
 
         for( k = 0; k < RDV; k++ ) rdv[k] = (double)rand()/(double)RAND_MAX;
 

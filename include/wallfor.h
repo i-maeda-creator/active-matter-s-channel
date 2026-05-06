@@ -12,7 +12,7 @@ void wallfor(){
     double ywm = LY2; //y wall middle
 
 
-    for(i =0; i< N ; i++){  
+    for(i =0; i< NP ; i++){  
             dx = 0.0;
             dy = y[i]-ywl ;  //yのwallのlow
 

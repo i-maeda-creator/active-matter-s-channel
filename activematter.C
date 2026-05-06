@@ -71,6 +71,34 @@ int main(int argc, char **argv){
         }
     }
     if( argc >= 5 ) init_mode = argv[4];
+    if( argc >= 6 ){
+        R = atof(argv[5]);
+        if( R <= 0.0 ){
+            printf("Radius must be positive.\n");
+            return 1;
+        }
+    }
+    if( argc >= 7 ){
+        NP = atoi(argv[6]);
+        if( NP <= 0 || NP > N ){
+            printf("Particle count must be between 1 and %d.\n",N);
+            return 1;
+        }
+    }
+    if( argc >= 8 ){
+        LX = atof(argv[7]);
+        if( LX <= 0.0 ){
+            printf("LX must be positive.\n");
+            return 1;
+        }
+    }
+    if( argc >= 9 ){
+        LY = atof(argv[8]);
+        if( LY <= 0.0 ){
+            printf("LY must be positive.\n");
+            return 1;
+        }
+    }
 
     if( ensure_dir(output_dir) != 0 ){
         printf("Failed to create output directory: %s\n",output_dir);
@@ -94,7 +122,8 @@ int main(int argc, char **argv){
     
     double time = 0.0;
 
-    fprintf(fr,"N %d\n",N);
+    fprintf(fr,"N_MAX %d\n",N);
+    fprintf(fr,"NP %d\n",NP);
     fprintf(fr,"OSTEP %d\n",OSTEP);
     fprintf(fr,"OUTPUT_STEPS %d\n",output_steps);
     fprintf(fr,"ISTEP %d\n",ISTEP);

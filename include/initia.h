@@ -2,7 +2,7 @@ void monrad(){
 
     int i;
 
-    for( i = 0; i < N; i++ ) r[i] = R;
+    for( i = 0; i < NP; i++ ) r[i] = R;
 
     return;
 }
@@ -12,7 +12,7 @@ void latpos(){
     int i;
     int m = 23;
 
-    for( i = 0; i < N; i++ ){
+    for( i = 0; i < NP; i++ ){
         x[i] = LY/(2.0*(double)m) + (i%m)*(LY/(double)m);
         y[i] = LY/(2.0*(double)m) + (i/m)*(LY/(double)m);
     }
@@ -25,7 +25,7 @@ void ranpos(){
     int i, j, c;
     double dx, dy, rij, sij;
 
-    for( i = 0; i < N; i++ ){
+    for( i = 0; i < NP; i++ ){
 
         c = 1;
 
@@ -66,7 +66,7 @@ void shppos(){
     double dx, dy, rij, sij;
     double mR = 1.1225*R; /*!*/
 
-    for( i = 0; i < N; i++ ){
+    for( i = 0; i < NP; i++ ){
 
         c = 1;
 
@@ -102,7 +102,7 @@ void ranvel(){
     double TMP = 0.0; // temperature
     double vmp = sqrt(2.0*TMP/MS);
 
-    for( i = 0; i < N; i++ ){
+    for( i = 0; i < NP; i++ ){
         vx[i] = vmp*sqrt(-log((double)rand()/(double)RAND_MAX))*cos(2.0*M_PI*(double)rand()/(double)RAND_MAX);
         vy[i] = vmp*sqrt(-log((double)rand()/(double)RAND_MAX))*cos(2.0*M_PI*(double)rand()/(double)RAND_MAX);
     }
@@ -114,7 +114,7 @@ void ranthe(){
 
     int i;
 
-    for( i = 0; i < N; i++ ){
+    for( i = 0; i < NP; i++ ){
         th[i] = 2.0*M_PI*((double)rand()/(double)RAND_MAX);
     }
 
@@ -125,7 +125,7 @@ void inithe(){
 
     int i;
 
-    for( i = 0; i < N; i++ ) th[i] = 0.0;
+    for( i = 0; i < NP; i++ ) th[i] = 0.0;
 
     return;
 }
@@ -134,7 +134,7 @@ void inifor(){
 
     int i;
 
-    for( i = 0; i < N; i++ ){
+    for( i = 0; i < NP; i++ ){
         fx[i] = 0.0;
         fy[i] = 0.0;
         mt[i] = 0.0;

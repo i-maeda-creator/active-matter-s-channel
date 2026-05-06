@@ -8,8 +8,8 @@ void vforce(){
 
 
 
-    for(i =0; i< N-1 ; i++){
-    for(j =i+1; j< N ; j++){    
+    for(i =0; i< NP-1 ; i++){
+    for(j =i+1; j< NP ; j++){    
 
             dx = x[i] -x[j];
             dy = y[i] -y[j]; 

@@ -2,7 +2,7 @@ void seuler(){
  
 int i;    
     
-    for(i =0; i< N ; i++){
+    for(i =0; i< NP ; i++){
             
             vx[i] = vx[i] + (fx[i]/MS)*DT;
             vy[i] = vy[i] + (fy[i]/MS)*DT;
@@ -19,7 +19,7 @@ void ovdamp(){
  
 int i;    
     
-    for(i =0; i< N ; i++){
+    for(i =0; i< NP ; i++){
             
              x[i] +=  fx[i]*DT + xix[i]*sqrt(DT);
              y[i] +=  fy[i]*DT + xiy[i]*sqrt(DT);

@@ -11,7 +11,7 @@ void wallfor(){
     double ywu = LY;
 
 
-    for(i =0; i< N ; i++){  
+    for(i =0; i< NP ; i++){  
             dx = 0.0;
             dy = y[i]-ywl ;  //yのwallのlow
 

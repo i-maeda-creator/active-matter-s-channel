@@ -33,6 +33,8 @@ double DD = 1.0e-2;
 double DR = 1.0e-2;
 
 /* variables */
+int NP = N;
+
 double ene, kin, pot, wpo;
 
 double r[N], th[N], mt[N], xit[N];

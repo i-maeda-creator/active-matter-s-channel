@@ -46,7 +46,7 @@ void shpfor(){
 
     wpo = 0.0; /*!*/
 
-    for( i = 0; i < N; i++ ){
+    for( i = 0; i < NP; i++ ){
 
         if( x[i] < 0.5*LX ){
 

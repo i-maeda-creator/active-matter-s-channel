@@ -1,7 +1,7 @@
 CXX ?= g++
 CXXFLAGS ?= -O2 -Wall -Wextra
 
-.PHONY: all check smoke run clean
+.PHONY: all check smoke shape-r04 run clean
 
 all: active-matter
 
@@ -12,7 +12,16 @@ check:
 	$(CXX) -fsyntax-only activematter.C
 
 smoke: active-matter
-	./active-matter runs/smoke-2d-baseline 1 10 random
+	./active-matter runs/smoke-2d-baseline 1 10 random 0.5 250 200 80
+
+shape-r04: active-matter
+	./active-matter runs/shape-r04-smoke 1 10 shape 0.4 10 200 80
+
+legacy-shape-r04: active-matter
+	./active-matter runs/legacy-shape-r04 1 1000 shape 0.4 10 68 35
+
+legacy-shape-r04-ly34: active-matter
+	./active-matter runs/legacy-shape-r04-ly34 1 1000 shape 0.4 10 68 34
 
 run: active-matter
 	./active-matter runs/latest

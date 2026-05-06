@@ -7,8 +7,8 @@ void kurfor(){
   /* Calculate forces fx, fy ( i < j ) */
   pot = 0.0;
 
-  for( int i = 0; i < N-1; i++ ){
-  for( int j = i+1; j < N; j++ ){
+  for( int i = 0; i < NP-1; i++ ){
+  for( int j = i+1; j < NP; j++ ){
 
     dx = x[i] - x[j];
     dy = y[i] - y[j];
