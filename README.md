@@ -54,8 +54,16 @@ g++ -fsyntax-only activematter.C
 
 ```sh
 g++ -O2 -Wall -Wextra activematter.C -o active-matter
-./active-matter
+./active-matter runs/baseline-2d
 ```
+
+短い動作確認だけを行う場合:
+
+```sh
+./active-matter runs/smoke-2d-baseline 1 10 random
+```
+
+引数は `出力フォルダ 出力ステップ数 内側ステップ数 初期配置` です。初期配置は `shape` または `random` です。省略すると `runs/latest 200 2000 shape` で実行します。
 
 `make` が使える環境では以下でも同じです。
 
@@ -66,15 +74,15 @@ make run
 
 出力:
 
-- `dat/out.dat`: 各出力ステップの粒子位置 `x y r`
-- `dat/ene.dat`: `time kin pot wpo ene`
-- `dat/params.txt`: 実行時の主要パラメータ
+- `runs/<run-name>/out.dat`: 各出力ステップの粒子位置 `x y r`
+- `runs/<run-name>/ene.dat`: `time kin pot wpo ene`
+- `runs/<run-name>/params.txt`: 実行時の主要パラメータ
 
 未完成または要確認のもの:
 
 - `KR = 0.0` なので、現状設定では Kuramoto 相互作用が無効です。
-- `time` が 0 初期化されていないため、出力時間が未定義になり得ます。
-- `ene.dat` は運動エネルギー計算がコメントアウトされ、壁ポテンシャル `wpo` も足されていないため、解析用途としては未完成です。
+- `ene.dat` は運動エネルギー計算がコメントアウトされているため、現状の `kin` は常に 0 です。
+- 現在の `shape` 初期配置は、`N=250`, `R=0.5`, `WS=3` の狭い入口に粒子を置こうとするため、配置探索に非常に時間がかかる可能性があります。昔の `out.dat` は半径 `0.4` で出力されており、当時の実行条件との差分を確認する必要があります。
 - `shpfor.h` 内でカーブ領域の `th[i]` をチャネル接線方向に直接上書きしており、粒子自身の向きダイナミクスと「壁による方向拘束」が混ざっています。
 - `zyugyo.C` 側の `eforce.h` / `vforce.h` は `L` を参照しますが、現在の `system.h` には `L` がなく `LX`, `LY` になっています。過去版の名残の可能性があります。
 - `dat/out.dat` と `dat/ene.dat` は 2025 年時点で空ファイルです。ルート直下の `out.dat`, `ene.dat` は 2023 年 1 月の過去出力です。
@@ -105,6 +113,8 @@ make run
 ## 研究を再開するなら
 
 短期ゴールは「S 字チャネル内で、自己駆動粒子集団がどの条件で流れ・渋滞・同期・偏りを示すかを再現可能に測る」ことが良さそうです。
+
+長期ゴールは、アクティブマターを自己組織化する交通・都市システムの基礎モデルとして育てることです。詳しくは `docs/research-roadmap.md` にまとめています。
 
 最初の再開ステップ:
 
