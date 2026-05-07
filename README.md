@@ -142,6 +142,7 @@ python analysis/animate_runs.py out.dat runs/legacy-best-500/out.dat --output an
 短期ゴールは「S 字チャネル内で、自己駆動粒子集団がどの条件で流れ・渋滞・同期・偏りを示すかを再現可能に測る」ことが良さそうです。
 
 長期ゴールは、アクティブマターを自己組織化する交通・都市システムの基礎モデルとして育てることです。詳しくは `docs/research-roadmap.md` にまとめています。
+自動運転・都市交通との対応関係は `docs/active-matter-city-map.md` に整理しています。
 
 実験の復元ログは `docs/experiment-log.md` に残しています。
 
