@@ -14,6 +14,9 @@ double LX = 200.0;
 double LY = 80.0;
 /* The width of S-shape wall */
 double WS = 3.0;
+/* Ring road center radius and lane width */
+double RC = 25.0;
+double RW = 8.0;
 /* WCA potential for walls */
 double WE = 1.0;
 

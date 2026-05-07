@@ -96,6 +96,24 @@ void shppos(){
     return;
 }
 
+void ringpos(){
+
+    int i;
+    double cx = 0.5*LX;
+    double cy = 0.5*LY;
+
+    for( i = 0; i < NP; i++ ){
+        double ph = 2.0*M_PI*(double)i/(double)NP;
+        double rr = RC;
+
+        x[i] = cx + rr*cos(ph);
+        y[i] = cy + rr*sin(ph);
+        th[i] = ph + 0.5*M_PI;
+    }
+
+    return;
+}
+
 void ranvel(){
 
     int i;

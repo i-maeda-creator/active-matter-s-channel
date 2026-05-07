@@ -66,6 +66,15 @@ g++ -O2 -Wall -Wextra activematter.C -o active-matter
 引数は `出力フォルダ 出力ステップ数 内側ステップ数 初期配置 半径 粒子数 LX LY` です。初期配置は `shape` または `random` です。省略すると `runs/latest 200 2000 shape 0.5 250 200 80` で実行します。
 `OSTEP` と `ISTEP` はデフォルト値として記録されますが、引数でそれより大きい値も指定できます。
 
+循環する環状道路を試す場合:
+
+```sh
+./active-matter runs/ring-road-smoke 120 100 ring 0.4 80 80 80 25 8
+python analysis/animate_single.py runs/ring-road-smoke/out.dat --params runs/ring-road-smoke/params.txt --output analysis/ring_road_smoke.gif --frames 120 --stride 1 --fps 12 --xlim 0,80 --ylim 0,80 --ring
+```
+
+`ring` の追加引数は `RC RW` で、環状道路の中心半径とレーン幅です。
+
 昔の出力に近い半径 `R=0.4` で S 字入口配置を試す場合:
 
 ```sh

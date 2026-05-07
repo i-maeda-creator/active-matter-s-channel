@@ -35,6 +35,34 @@ The current S-channel simulation can be reinterpreted as a minimal traffic exper
 
 This makes the current code useful even before full 3D city modeling.
 
+## First City Primitive: Circular Road
+
+The first urban primitive should be a closed circular road.
+
+Why this comes first:
+
+- It removes entrances and exits.
+- It lets us measure congestion without boundary injection artifacts.
+- Density is controlled by particle count and road length.
+- Platooning and stop-and-go waves can circulate repeatedly.
+- It is the simplest bridge between active matter and traffic flow.
+
+In the code this is the `ring` mode:
+
+```sh
+./active-matter runs/ring-road-smoke 120 100 ring 0.4 80 80 80 25 8
+python analysis/animate_single.py runs/ring-road-smoke/out.dat --params runs/ring-road-smoke/params.txt --output analysis/ring_road_smoke.gif --frames 120 --stride 1 --fps 12 --xlim 0,80 --ylim 0,80 --ring
+```
+
+Interpretation:
+
+- `RC`: road centerline radius.
+- `RW`: lane width.
+- `NP`: number of vehicles or agents on the loop.
+- `FA`: desired driving speed.
+- `KR`: cooperative alignment or platooning strength.
+- `DR`: heading uncertainty.
+
 ## Research Questions
 
 ### 1. Activity vs Congestion

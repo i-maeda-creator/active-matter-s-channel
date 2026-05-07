@@ -7,6 +7,7 @@
 #include "include/aforce.h"
 #include "include/kurfor.h"
 #include "include/shpfor.h"
+#include "include/ringroad.h"
 
 #include <errno.h>
 #include <string.h>
@@ -99,6 +100,20 @@ int main(int argc, char **argv){
             return 1;
         }
     }
+    if( argc >= 10 ){
+        RC = atof(argv[9]);
+        if( RC <= 0.0 ){
+            printf("RC must be positive.\n");
+            return 1;
+        }
+    }
+    if( argc >= 11 ){
+        RW = atof(argv[10]);
+        if( RW <= 0.0 ){
+            printf("RW must be positive.\n");
+            return 1;
+        }
+    }
 
     if( ensure_dir(output_dir) != 0 ){
         printf("Failed to create output directory: %s\n",output_dir);
@@ -133,6 +148,8 @@ int main(int argc, char **argv){
     fprintf(fr,"LX %.15g\n",LX);
     fprintf(fr,"LY %.15g\n",LY);
     fprintf(fr,"WS %.15g\n",WS);
+    fprintf(fr,"RC %.15g\n",RC);
+    fprintf(fr,"RW %.15g\n",RW);
     fprintf(fr,"WE %.15g\n",WE);
     fprintf(fr,"EP %.15g\n",EP);
     fprintf(fr,"FA %.15g\n",FA);
@@ -150,11 +167,13 @@ int main(int argc, char **argv){
         ranpos();
     }else if( strcmp(init_mode,"shape") == 0 ){
         shppos();
+    }else if( strcmp(init_mode,"ring") == 0 ){
+        ringpos();
     }else{
-        printf("Unknown init mode: %s. Use shape or random.\n",init_mode);
+        printf("Unknown init mode: %s. Use shape, random, or ring.\n",init_mode);
         return 1;
     }
-    inithe();
+    if( strcmp(init_mode,"ring") != 0 ) inithe();
     
     for(ostep = 0;ostep < output_steps; ostep++){
 
@@ -163,13 +182,20 @@ int main(int argc, char **argv){
         time += DT; 
             
             inifor();
-           // wcafor();
-            kurfor();
+            if( strcmp(init_mode,"ring") == 0 ){
+                pairfor_direct();
+            }else{
+                kurfor();
+            }
             rforce();
             aforce();
-            shpfor();
+            if( strcmp(init_mode,"ring") == 0 ){
+                ringfor();
+            }else{
+                shpfor();
+            }
             ovdamp();
-            pershp();
+            if( strcmp(init_mode,"ring") != 0 ) pershp();
             
      }
 
